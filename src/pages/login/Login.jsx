@@ -1,7 +1,8 @@
 import React from "react";
+import AuthenticateLayout from "../../components/UI/AuthenticateLayout";
 
 const Login = () => {
-  return <div>Login</div>;
+  return <AuthenticateLayout></AuthenticateLayout>;
 };
 
 export default Login;
