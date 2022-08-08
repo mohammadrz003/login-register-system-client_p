@@ -5,7 +5,11 @@ import emailImage from "../../assets/email.svg";
 import twitterImage from "../../assets/twitter.svg";
 import facebookImage from "../../assets/facebook.svg";
 
-const RegisterOptions = () => {
+const RegisterOptions = (props) => {
+  const showRegisterFormHandler = () => {
+    props.onShowRegisterForm(true);
+  };
+
   return (
     <div className="w-full min-h-screen flex flex-col justify-evenly md:px-[4vw]">
       <div className="mx-auto w-full max-w-[30vw]">
@@ -13,7 +17,10 @@ const RegisterOptions = () => {
           Get started
         </h2>
         <ul className="space-y-[1.5vh] mt-[5vh]">
-          <li className="w-full p-[1.7vw] bg-white rounded-lg shadow-md flex space-x-[1.7vw] items-center cursor-pointer">
+          <li
+            onClick={showRegisterFormHandler}
+            className="w-full p-[1.7vw] bg-white rounded-lg shadow-md flex space-x-[1.7vw] items-center cursor-pointer"
+          >
             <span className="inline-block bg-palette-whiteLilac rounded-lg p-[1.2vw]">
               <img className="w-[1.7vw]" src={emailImage} alt="email" />
             </span>
