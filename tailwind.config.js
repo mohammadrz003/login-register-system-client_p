@@ -5,11 +5,11 @@ module.exports = {
     extend: {
       colors: {
         palette: {
-          whiteLilac: "#EAE6F6",
+          whiteLilac: "#F6F5FC",
           baliHai: "#8B8CB2",
           mediumRedViolet: "#CA3185",
           luckyPoint: "#1E1E64",
-          dodgerBlue: "#24A5F4",
+          dodgerBlue: "#1730FB",
           waterloo: "#7C7C94",
         },
       },
