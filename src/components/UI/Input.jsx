@@ -3,7 +3,10 @@ import React from "react";
 const Input = (props) => {
   return (
     <div className="flex flex-col space-y-1 lg:space-y-[0.8vh]">
-      <label htmlFor={props.name} className="font-bold text-sm lg:leading-none lg:text-[1.2vw]">
+      <label
+        htmlFor={props.name}
+        className="font-bold text-sm lg:leading-none lg:text-[1.2vw]"
+      >
         {props.label}
       </label>
       <input
@@ -11,6 +14,8 @@ const Input = (props) => {
         id={props.name}
         type={props.type || "text"}
         name={props.name}
+        value={props.value}
+        onChange={props.onChange}
       />
     </div>
   );

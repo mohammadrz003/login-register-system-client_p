@@ -1,23 +1,25 @@
-import React, { useState } from "react";
-import LoginForm from "../../components/login/LoginForm";
-import LoginOptions from "../../components/login/LoginOptions";
-import AuthenticateLayout from "../../components/UI/AuthenticateLayout";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+
+import LoginForm from "../../components/authenticate/LoginForm";
+import AuthenticateLayout from "../../components/authenticate/AuthenticateLayout";
 
 const Login = () => {
-  const [isLoginWithEmail, setIsLoginWithEmail] = useState(false);
+  const { state } = useLocation();
 
-  const changeLoginWithEmailHandler = (status) => {
-    setIsLoginWithEmail(status);
-  };
+  useEffect(() => {
+    if (state?.toastMessage) {
+      toast.success(state.toastMessage.message, {
+        duration: 6000,
+      });
+    }
+  }, [state?.toastMessage]);
 
   return (
     <AuthenticateLayout>
       <div className="w-full h-full flex items-center">
-        {isLoginWithEmail ? (
-          <LoginForm onShowLoginForm={changeLoginWithEmailHandler} />
-        ) : (
-          <LoginOptions onShowLoginForm={changeLoginWithEmailHandler} />
-        )}
+        <LoginForm />
       </div>
     </AuthenticateLayout>
   );

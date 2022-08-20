@@ -6,7 +6,7 @@ import logoImage from "../../assets/logo.svg";
 const AuthenticateLayout = (props) => {
   return (
     <div className="w-full min-h-screen grid grid-cols-12">
-      <div className="bg-palette-luckyPoint col-span-12 lg:col-span-4 px-6 py-10 lg:p-[3vw]">
+      <div className="hidden lg:block bg-palette-luckyPoint col-span-12 lg:col-span-4 px-6 py-10 lg:p-[3vw]">
         <Link to="/">
           <img className="w-36 md:w-44 lg:w-[11vw] h-auto" src={logoImage} alt="logo" />
         </Link>
