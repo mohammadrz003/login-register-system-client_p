@@ -12,3 +12,15 @@ export const loginUser = (data) => {
 export const getUserProfile = () => {
   return authenticatedHttp.get("/users/authenticate");
 };
+
+export const updateUserProfilePhoto = async (data) => {
+  return authenticatedHttp.put("/users/update-user-photo", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+
+export const updateUserProfileInfo = (data) => {
+  return authenticatedHttp.put("/users/update-user-info", data);
+};

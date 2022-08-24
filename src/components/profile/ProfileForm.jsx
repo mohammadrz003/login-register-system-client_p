@@ -1,25 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
+import toast from "react-hot-toast";
 
 import AuthContext from "../../contexts/auth-context";
-import { getUserProfile } from "../../services/userAuthService";
+import { updateUserProfileInfo } from "../../services/userAuthService";
 import Input from "../UI/Input";
 
-const ProfileForm = () => {
+const ProfileForm = (props) => {
   const AuthCtx = useContext(AuthContext);
-  const [userProfileData, setUserProfileData] = useState({
+  const [enteredUserProfileData, setEnteredUserProfileData] = useState({
     name: "",
     email: "",
   });
 
   useEffect(() => {
-    (async () => {
-      if (AuthCtx.account) {
-        const { data } = await getUserProfile();
-        const { name, email } = data.user;
-        setUserProfileData({ name, email });
-      }
-    })();
-  }, [AuthCtx.account]);
+    const { name, email } = props.userProfileData;
+    setEnteredUserProfileData({ name, email });
+  }, [props.userProfileData]);
 
   const logoutHandler = () => {
     AuthCtx.setAccount(null);
@@ -27,24 +23,46 @@ const ProfileForm = () => {
 
   const userProfileChangeHandler = (e) => {
     const value = e.target.value;
-    setUserProfileData((prevState) => {
+    setEnteredUserProfileData((prevState) => {
       return { ...prevState, [e.target.name]: value };
     });
   };
 
+  const updateUserHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await updateUserProfileInfo(enteredUserProfileData);
+      if (!data?.errors) {
+        toast.success(data.message);
+        const { user, token } = data;
+        AuthCtx.setAccount({ user, token });
+      } else if (data?.errors) {
+        for (let error of data.errors) {
+          toast.error(error.msg);
+        }
+        props.onRandomNumber(Math.random());
+      }
+    } catch (error) {
+      if (error.response.data.message) {
+        toast.error(error.response.data.message);
+      }
+      props.onRandomNumber(Math.random());
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={updateUserHandler}>
       <div className="space-y-4">
         <Input
           name="name"
           label="Name"
-          value={userProfileData.name}
+          value={enteredUserProfileData.name}
           onChange={userProfileChangeHandler}
         />
         <Input
           name="email"
           label="Email"
-          value={userProfileData.email}
+          value={enteredUserProfileData.email}
           onChange={userProfileChangeHandler}
         />
         <div className="pt-1 space-y-4">
