@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 
 import LoginForm from "../../components/authenticate/LoginForm";
 import AuthenticateLayout from "../../components/authenticate/AuthenticateLayout";
+import Layout from "../../components/layouts/Layout";
 
 const Login = () => {
   const { state } = useLocation();
@@ -17,11 +18,13 @@ const Login = () => {
   }, [state?.toastMessage]);
 
   return (
-    <AuthenticateLayout>
-      <div className="w-full h-full flex items-center">
-        <LoginForm />
-      </div>
-    </AuthenticateLayout>
+    <Layout headerClass="lg:hidden">
+      <AuthenticateLayout>
+        <div className="w-full h-full flex items-center">
+          <LoginForm />
+        </div>
+      </AuthenticateLayout>
+    </Layout>
   );
 };
 

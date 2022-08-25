@@ -46,10 +46,6 @@ const RegisterForm = (props) => {
     setEnteredUserData({ name: "", email: "", password: "" });
   };
 
-  const googleHandler = () => {
-    window.open("http://localhost:5000/api/users/google", "_self");
-  };
-
   return (
     <div className="w-full lg:min-h-screen flex flex-col justify-evenly py-8 md:py-10 lg:py-0 px-6 md:px-[4vw]">
       <div className="mx-auto w-full max-w-screen-sm lg:max-w-[30vw]">
@@ -60,7 +56,6 @@ const RegisterForm = (props) => {
         </div>
         <AuthenticateOptions
           className="mt-8 lg:mt-[4.5vh]"
-          onGoogle={googleHandler}
         />
         <div className="w-full relative flex items-center justify-center py-3 mt-7 lg:py-[2vh] lg:mt-[3.5vh]">
           <span className="block w-full h-[1px] bg-gray-200"></span>

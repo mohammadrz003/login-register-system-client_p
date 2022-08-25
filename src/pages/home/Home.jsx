@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import AuthenticationOptions from "../../components/home/AuthenticationOptions";
 import AuthContext from "../../contexts/auth-context";
 import Profile from "../../components/profile/Profile";
+import Layout from "../../components/layouts/Layout";
 
 const Home = () => {
   const { state } = useLocation();
@@ -16,7 +17,11 @@ const Home = () => {
     }
   }, [state?.toastMessage]);
 
-  return <div>{AuthCtx.account ? <Profile /> : <AuthenticationOptions />}</div>;
+  return (
+    <Layout>
+      <div>{AuthCtx.account ? <Profile /> : <AuthenticationOptions />}</div>
+    </Layout>
+  );
 };
 
 export default Home;

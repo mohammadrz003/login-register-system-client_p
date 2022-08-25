@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const AuthenticationOptions = () => {
   return (
-    <div className="container m-auto max-w-screen-xl w-full min-h-screen flex justify-center items-center">
+    <div className="container m-auto max-w-screen-xl w-full min-h-[calc(100vh-92px)] flex justify-center items-center">
       <div className="w-full flex flex-col space-y-12 md:space-y-0 md:flex-row md:justify-evenly px-5 py-8">
         <Card className="flex flex-col justify-center items-center px-11 py-10 bg-white shadow-sm space-y-6">
           <div className="rounded-full">
