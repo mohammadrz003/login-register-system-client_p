@@ -16,15 +16,15 @@ const Header = (props) => {
     <div
       className={`${props.className} bg-white sticky top-0 left-0 right-0 z-[999]`}
     >
-      <header className="mx-auto px-3 py-3 lg:px-10 lg:py-3">
+      <header className="mx-auto px-4 py-4 lg:px-10 lg:py-3">
         <div className="flex justify-between items-center lg:space-x-5">
           <div>
-            <h1 className="font-bold lg:text-xl">
+            <h1 className="font-bold text-lg lg:text-xl">
               <Link to="/">Logoname</Link>
             </h1>
           </div>
           <div className="lg:hidden" onClick={changeHeaderVisibilityHandler}>
-            {isHeaderVisible ? <GrClose /> : <AiOutlineMenu />}
+            {isHeaderVisible ? <GrClose size="1.5rem" /> : <AiOutlineMenu size="1.5rem" />}
           </div>
           <div
             className={`${
@@ -51,16 +51,16 @@ const Header = (props) => {
               {AuthCtx.account ? (
                 <Link
                   to="/"
-                  className="font-semibold text-lg text-[#1CD6CE] lg:text-gray-800 px-6 py-3 border border-[#1CD6CE] lg:border-gray-800 rounded-sm"
+                  className="text-center font-semibold text-lg text-[#1CD6CE] lg:text-gray-800 px-6 py-3 border border-[#1CD6CE] lg:border-gray-800 rounded-sm"
                 >
                   Profile
                 </Link>
               ) : (
                 <>
-                  <Link to="/login" className="font-semibold text-lg text-[#1CD6CE] lg:text-gray-800 px-6 py-3">
+                  <Link to="/login" className="text-center font-semibold text-lg text-[#1CD6CE] lg:text-gray-800 px-6 py-3">
                     Sign In
                   </Link>
-                  <Link to="/register" className="font-semibold text-lg text-[#1CD6CE] lg:text-gray-800 px-6 py-3 border border-[#1CD6CE] lg:border-gray-800 rounded-sm">
+                  <Link to="/register" className="text-center font-semibold text-lg text-[#1CD6CE] lg:text-gray-800 px-6 py-3 border border-[#1CD6CE] lg:border-gray-800 rounded-sm">
                     Sign Up
                   </Link>
                 </>

@@ -103,7 +103,7 @@ const ProfileCard = () => {
               />
             ) : (
               <img
-                className="w-32 h-32 w-full h-auto rounded-full object-cover"
+                className="w-32 h-32 rounded-full object-cover"
                 src={
                   userProfileData.avatar
                     ? validURL(userProfileData.avatar)

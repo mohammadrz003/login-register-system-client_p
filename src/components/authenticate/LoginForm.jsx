@@ -1,6 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
 
 import Input from "../UI/Input";
 import { loginUser } from "../../services/userAuthService";
@@ -10,25 +12,21 @@ import AuthenticateOptions from "./AuthenticateOptions";
 const LoginForm = (props) => {
   const AuthCtx = useContext(AuthContext);
   const navigate = useNavigate();
-  const [enteredUserData, setEnteredUserData] = useState({
-    email: "",
-    password: "",
+
+  const validate = Yup.object({
+    email: Yup.string().email().required("Email is required"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(6, "Password is too short - should be 6 chars minimum"),
   });
 
-  const changeEnteredUserDataHandler = (e) => {
-    const value = e.target.value;
-    setEnteredUserData((prevState) => {
-      return { ...prevState, [e.target.name]: value };
-    });
-  };
-
-  const submitHandler = async (event) => {
-    event.preventDefault();
+  const submitHandler = async (values, { resetForm }) => {
     try {
-      const { data } = await loginUser(enteredUserData);
+      const { data } = await loginUser(values); // pass input values
       if (!data?.errors) {
         const { user, token } = data;
         AuthCtx.setAccount({ user, token });
+        resetForm({ email: "", password: "" });
         return navigate("/", {
           state: {
             toastMessage: {
@@ -48,6 +46,7 @@ const LoginForm = (props) => {
         toast.error(error.response.data.message);
       }
     }
+    resetForm({ email: "", password: "" });
   };
 
   return (
@@ -66,30 +65,28 @@ const LoginForm = (props) => {
           </span>
         </div>
         <div className="mt-10 lg:mt-[4.5vh]">
-          <form onSubmit={submitHandler}>
-            <div className="space-y-7 lg:space-y-[1vw]">
-              <Input
-                label="Email"
-                name="email"
-                type="email"
-                value={enteredUserData.email}
-                onChange={changeEnteredUserDataHandler}
-              />
-              <Input
-                label="Password"
-                name="password"
-                type="password"
-                value={enteredUserData.password}
-                onChange={changeEnteredUserDataHandler}
-              />
-            </div>
-            <button
-              className="w-full text-base p-4 lg:p-0 lg:py-[2.2vh] mt-10 lg:leading-none lg:text-[1.2vw] lg:mt-[3vh] rounded-md bg-palette-luckyPoint text-white font-bold"
-              type="submit"
-            >
-              Sign In
-            </button>
-          </form>
+          <Formik
+            initialValues={{ email: "", password: "" }}
+            validationSchema={validate}
+            onSubmit={submitHandler}
+            validateOnMount={true}
+          >
+            {(formik) => (
+              <Form>
+                <div className="space-y-7 lg:space-y-[1vw]">
+                  <Input label="Email" name="email" type="email" />
+                  <Input label="Password" name="password" type="password" />
+                </div>
+                <button
+                  disabled={!formik.isValid}
+                  className="disabled:opacity-75 w-full text-base p-4 lg:p-0 lg:py-[2.2vh] mt-10 lg:leading-none lg:text-[1.2vw] lg:mt-[3vh] rounded-md bg-palette-luckyPoint text-white font-bold"
+                  type="submit"
+                >
+                  Sign In
+                </button>
+              </Form>
+            )}
+          </Formik>
           <p className="text-sm md:text-lg lg:text-[1.3vw] mt-6 lg:mt-[3vh]">
             Don't have an account yet?{" "}
             <Link className="text-palette-dodgerBlue" to="/register">
