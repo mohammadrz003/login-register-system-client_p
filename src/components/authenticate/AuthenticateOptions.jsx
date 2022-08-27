@@ -6,7 +6,7 @@ import googleLogoImage from "../../assets/Google_Logo.svg";
 
 const AuthenticateOptions = (props) => {
   const googleHandler = () => {
-    window.open(`${process.env.REACT_APP_SERVER_END_POINT}/api/users/google", "_self`);
+    window.open(`${process.env.REACT_APP_SERVER_END_POINT}/api/users/google`, "_self");
   };
 
   return (
