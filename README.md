@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Login and Register system (client)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Authenticating users is one of the important things in most projects and we can't deny the importance of it and it's extremely essential. so, it's the best practice if we can understand the concept of how an Authentication system is built.
+in this project, I have implemented the whole process of Logging & Registering users with both a traditional approach using forms and some third-party apps like Google, GitHub, and Twitter. using OAuth (open authorization) options besides your local authorization forms can persuade users to trust your app and use it in an easier way and without any worries about exposing their password.
+we will show the user profile info after the Login process and they're able to upload their photo for their profile picture.
 
-## Available Scripts
+> **Note:** This project also has a [back-end source code](https://github.com/mohammadrz003/login-register-system-server_p) that is built with node.js and this project it's matched with it.
 
-In the project directory, you can run:
+### Screenshots
 
-### `yarn start`
+_Home page_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![homepage(beforelogin)](https://github.com/mohammadrz003/login-register-system-client_p/blob/master/screenshots/homepage%28before%20login%29.png?raw=true)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+_Sing up & Sing in_
 
-### `yarn test`
+![enter image description here](https://github.com/mohammadrz003/login-register-system-client_p/blob/master/screenshots/signuppng.png?raw=true)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+_User profile_
 
-### `yarn build`
+![enter image description here](https://github.com/mohammadrz003/login-register-system-client_p/blob/master/screenshots/profile.png?raw=true)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### What technologies I used:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [React.js](https://reactjs.org/)
+- [React router](https://reactrouter.com/en/main)
+- [Formik](https://formik.org/)
+- [Tailwindcss](https://tailwindcss.com/)
+- [Axios](https://axios-http.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### How to install and run the project:
 
-### `yarn eject`
+install dependencies using _npm_
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+start the project by running:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Project set up:
 
-## Learn More
+pay attention to the `.env` file which is located in the project's root.
+there are some variables that are for setting API endpoint and server URL and so on.
+you can change them with your custom values.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    REACT_APP_API_BASE_URL=<your-custom-value>
+    REACT_APP_SERVER_END_POINT=<your-custom-value>
+    REACT_APP_LOCAL_STORAGE_AUTH_KEY=<your-custom-value>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT License](LICENSE)
